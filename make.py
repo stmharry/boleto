@@ -1,13 +1,13 @@
 from __future__ import division
 
 import matplotlib
-matplotlib.use('Agg')
-matplotlib.rcParams['text.antialiased'] = False
 import cStringIO
 import PIL
 import random
 
 from matplotlib import pyplot, colors, font_manager
+matplotlib.use('Agg')
+matplotlib.rcParams['text.antialiased'] = False
 
 
 def LOG(obj):
@@ -47,7 +47,7 @@ class Canvas(object):
             )
             self.digits.append(digit)
 
-        self.s = ''.join([digit.s for digit in self.digits])
+        self.s = ''.join([d.s for d in self.digits])
 
     def random_rectangles(self):
         self.rectangles = []
@@ -85,7 +85,7 @@ class Canvas(object):
         )
 
         image = PIL.Image.open(buf)
-        image.save('{}.jpg'.format(self.s), quality=random.randint(30, 95))
+        image.save('img/{}.jpg'.format(self.s), quality=random.randint(30, 95))
 
     def close(self):
         pyplot.close(self.fig)
