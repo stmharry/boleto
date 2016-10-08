@@ -4,10 +4,11 @@ import matplotlib
 import cStringIO
 import PIL
 import random
+import sys
 
-from matplotlib import pyplot, colors, font_manager
 matplotlib.use('Agg')
 matplotlib.rcParams['text.antialiased'] = False
+from matplotlib import pyplot, colors, font_manager
 
 
 def LOG(obj):
@@ -154,7 +155,8 @@ class Rectangle(object):
         )
 
 
-for _ in xrange(16):
+for _ in xrange(int(sys.argv[1])):
+    print(_)
     canvas = Canvas()
     canvas.random_digits()
     canvas.random_rectangles()
